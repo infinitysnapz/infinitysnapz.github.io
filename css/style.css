@@ -1,33 +1,32 @@
 @font-face {
     font-family: "Noto Serif";
-    src: url("../rsrc/NotoSerif.ttf");
+      src: url("../rsrc/NotoSerif.ttf");
 }
 @font-face {
     font-family: "Noto Serif";
-    src: url("../rsrc/NotoSerifItalic.ttf");
-    font-style: italic, oblique;
+      src: url("../rsrc/NotoSerifItalic.ttf");
+    font-style:italic;
 }
 
 body, html {
   height: 100%;
   font-family: 'Noto Serif', serif;
   overflow: hidden;
-  font: light;
+  font-weight: 300;
 }
 
 * {
+  font-family: 'Noto Serif', serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: none;
 }
 
-
-h1{
-  font-stretch: ultra-condensed;
-  font: bold;
+p{
+  font-family: 'Noto Serif', serif;
+  font-weight: 300;
 }
-
 
 fstretch {
     display: inline-block;
