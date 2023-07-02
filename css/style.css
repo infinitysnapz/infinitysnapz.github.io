@@ -9,7 +9,7 @@
 }
 
 body, html {
-  text-shadow:0px 0px 10px rgba(0,0,0,0.3), 0px 0px 5px rgba(0,0,0),0px 0px 2px rgba(0,0,0);
+  text-shadow:0px 0px 0.1rem rgba(0,0,0,0.3), 0px 0px 5px rgba(0,0,0),0px 0px 2px rgba(0,0,0);
   height: 100%;
   font-family: 'Noto Serif', serif;
   overflow: hidden;
@@ -45,8 +45,7 @@ fstretch {
   /* The image used */
   background-image: url("../rsrc/bg/index.webp");
   /* Add the blur effect */
-  filter: blur(0.5vh);
-  -webkit-filter: blur(0.5vh);
+  filter: blur(0.5vh) brightness(60%);
   /* Full height */
   height: 110%;
   margin: -4vh -4vh -4vh -4vh;
@@ -55,45 +54,35 @@ fstretch {
   background-repeat: repeat;
   background-size: cover;
 }
-
-.blend1{
-  mix-blend-mode: multiply;
-  height:120%;
-  width: 100%;
-  max-width: 40rem;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -100%);
-  z-index:100;
-  background-color: rgba(234,203,124);
-  opacity: 65%;
+.blank{
+  filter: none;
 }
-
 .main{
-  z-index: 10;
   height:120%;
   width: 100%;
   max-width: 40rem;
   left: 50%;
-  background-color: rgb(255,255,255); /* Fallback color */
-  background-color: rgba(255,255,255, 0.1); /* Black w/opacity/see-through */
+  /*background-color: rgb(255,255,255);  Fallback color */
+  background-color: rgba(255,255,255, 0.05); /* Black w/opacity/see-through */
   position: absolute;
   transform: translate(-50%, -100%);
-  #backdrop-filter: grayscale(1) blur(0.5vh);
+  backdrop-filter: grayscale(1) blur(1.5vh);
 }
 
 .container{
-  z-index: -1000;
+  filter: drop-shadow(0 0 0.1rem rgba(0, 0, 0, 0.2));
   width: 100%;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
+  isolation:isolate;
 }
 
 .banner {
   color: white;
   text-align: left;
 }
+
 
 hr{
   clear: both;
@@ -118,7 +107,6 @@ hr.grad2 {
   background-color: rgba(255,255,255, 0.2); /* Black w/opacity/see-through */
   color: white;
   border: 0px solid #f1f1f1;
-  z-index: 2;
   width: 100%;
   padding: 1rem;
   font-size: 1rem;
