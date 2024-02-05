@@ -7,20 +7,37 @@
       src: url("../rsrc/NotoSerifItalic.ttf");
     font-style:italic;
 }
+.stroke {
+	@include stroke-width(2px);
+	@include stroke-color($stroke);
+	color: transparent;
+}
+@mixin stroke-width($property) {
+	-webkit-text-stroke-width: $property;
+	-moz-text-stroke-width: $property;
+}
+
+@mixin stroke-color($property) {
+	-webkit-text-stroke-color: $property;
+	-moz-text-stroke-color: $property;
+}
 
 :root {
   --main-color: 255,255,255;
   --light-color: 255,255,255;
+  --shadow: 0px 0px 0.5rem rgba(0,0,0,1)
 }
 
 body, html {
-  text-shadow:0px 0px 0.5rem rgba(0,0,0,1);
+  text-shadow:var(--shadow);
   height: 100%;
   font-family: 'Noto Serif', serif;
   overflow: hidden;
-  font-weight: 300;
+  font-weight: 400;
   color: rgb(var(--main-color));
+  font-size: 100%;
 }
+
 
 * {
   font-family: 'Noto Serif', serif;
@@ -37,7 +54,20 @@ p{
 
 fstretch {
     display: inline-block;
+    font-size: 2.5rem;
     transform-origin: 0 100%;
+    height = 50%;
+    -webkit-transform: scale(1,0.5);
+    -moz-transform: scale(1,0.5);
+    -ms-transform: scale(1,0.5);
+    -o-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+}
+
+fstretch2 {
+    display: inline-block;
+    font-size: 2.5rem;
+    transform-origin: 0 000%;
     height = 50%;
     -webkit-transform: scale(1,0.5);
     -moz-transform: scale(1,0.5);
@@ -74,22 +104,31 @@ fstretch {
 }
 
 .main{
-  background-color: rgba(var(--dark-color),0.1);
+  background-color: rgba(var(--main-color),0.05);
   position: relative;
   height:100%;
   width: 100%;
-  max-width: 40rem;
+  max-width: 45rem;
   margin: auto;
 }
 
 .main::before{
-  background-color: rgba(var(--dark-color),0.5);
+  background-color: rgba(var(--main-color),0.4);
   content: "";
   position: absolute;
   inset: 0;
   mix-blend-mode: overlay;
   z-index: 0;
   backdrop-filter: brightness(75%) grayscale(0.9) contrast(100%) blur(5px) ;
+}
+
+.main::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+  z-index: 0;
+  backdrop-filter: brightness(75%) grayscale(0.9) contrast(100%) b
 }
 
 
@@ -126,13 +165,78 @@ hr.grad2 {
 
 /* Position text in the middle of the page/image */
 .bg-text {
-  background-color: rgb(var(--dark-color)); /* Fallback color */
-  background-color: rgba(var(--dark-color), 0.1); /* Black w/opacity/see-through */
+  background-color: rgb(var(--main-color)); /* Fallback color */
+  background-color: rgba(var(--main-color), 0.12); /* Black w/opacity/see-through */
   color: rgb(var(--main-color));
   border: 0px solid #f1f1f1;
   width: 100%;
-  padding: 1rem;
+  padding: 1.5rem;
   font-size: 1rem;
-  mix-blend-mode: difference;
-  text-align: center;
+  text-align: left;
+}
+
+.pseudopad{
+  height:100%;
+  width:1.5rem;
+  min-width: 1.5rem;
+}
+
+
+.sideflexcontainer{
+  display: flex;
+}
+
+.btncontainer{
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 1.5rem;
+
+}
+
+.btn1{
+  display: flex;
+  background-color: rgb(var(--main-color));
+  width: 11rem;
+  height: 11rem;
+  box-shadow:var(--shadow);
+  flex-direction: column-reverse;
+  padding: 0.1rem 0.2rem;
+  flex: 0 0 0;
+}
+
+.btn1::before{
+  flex: 0 1 min-content;
+  inset: 0;
+  content: attr(data-bg-text);
+  color: black;
+  text-shadow: none;
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 2rem;
+  font-weight: 700;
+  transform-origin: 0 100%;
+  font-style:italic;
+  color:rgba(0,0,0,1);
+  -webkit-text-stroke: 1px black;
+  -o-transform: scale(1,0.5);
+  transform: scale(1,0.5);
+}
+
+.btn1::after{
+  flex: 0 1 min-content;
+  inset: 0;
+  content: attr(data-bg-text);
+  color: black;
+  text-shadow: none;
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 2rem;
+  font-weight: 700;
+  transform-origin: 0 300%;
+  font-style:italic;
+  color:rgba(0,0,0,0);
+  -webkit-text-stroke: 1px black;
+  transform: scale(1,0.5);
+  filter: drop-shadow(0 -2rem 0 rgba(0,0,0,0.66)) drop-shadow(0 -4rem 0 rgba(0,0,0,0.4356));
 }
